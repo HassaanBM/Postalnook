@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PostalNook — Own Your City | Licensing Opportunities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:   #1B2D5E;
+      --orange: #F47920;
+      --white:  #FFFFFF;
+      --gray-50:  #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-500: #6B7280;
+      --gray-700: #374151;
+      --gray-900: #111827;
+    }
+
+    body { font-family: 'Inter', system-ui, sans-serif; color: var(--gray-900); line-height: 1.6; }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      background: var(--orange); color: var(--white); border: none;
+      padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: background .2s, transform .1s;
+    }
+    .btn-primary:hover { background: #e06810; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,.4);
+      padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: border-color .2s;
+    }
+    .btn-outline:hover { border-color: var(--white); }
+    .btn-white {
+      background: var(--white); color: var(--orange); border: none;
+      padding: 16px 44px; border-radius: 12px; font-size: 17px; font-weight: 700;
+      cursor: pointer; text-decoration: none; display: inline-block;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.18); }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--white); border-bottom: 1px solid var(--gray-200);
+      padding: 0 24px; position: sticky; top: 0; z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-size: 20px; font-weight: 800; text-decoration: none; }
+    .nav-logo .p { color: var(--navy); }
+    .nav-logo .n { color: var(--orange); }
+    .nav-links { display: flex; gap: 32px; list-style: none; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--gray-700); text-decoration: none; }
+    .nav-links .active { color: var(--orange); font-weight: 700; }
+
+    /* ── SECTIONS ── */
+    .section { padding: 88px 24px; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 44px); font-weight: 800;
+      color: var(--navy); line-height: 1.15; margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 17px; color: var(--gray-500); max-width: 600px; margin-bottom: 52px; line-height: 1.65;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy); padding: 100px 24px 80px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 75% 50%, rgba(244,121,32,.14) 0%, transparent 60%);
+    }
+    .hero-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 20px;
+    }
+    .hero-title {
+      font-size: clamp(36px, 4.5vw, 58px); font-weight: 800;
+      color: var(--white); line-height: 1.1; margin-bottom: 20px;
+    }
+    .hero-title em { color: var(--orange); font-style: normal; }
+    .hero-sub {
+      font-size: 17px; color: rgba(255,255,255,.68); margin-bottom: 40px; line-height: 1.65;
+    }
+    .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .hstat {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px; padding: 28px 24px;
+    }
+    .hstat-num {
+      font-size: 38px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 6px;
+    }
+    .hstat-num sup { color: var(--orange); font-size: 22px; }
+    .hstat-lbl { font-size: 13px; color: rgba(255,255,255,.5); font-weight: 500; }
+
+    /* ── TRACTION ── */
+    .traction { background: var(--white); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .stat-card {
+      background: var(--gray-50); border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 36px 24px; text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(27,45,94,.1); }
+    .stat-num {
+      font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 8px;
+    }
+    .stat-num sup { color: var(--orange); font-size: 28px; vertical-align: top; margin-top: 8px; }
+    .stat-desc { font-size: 14px; color: var(--gray-500); font-weight: 500; }
+
+    /* ── OVERVIEW ── */
+    .overview { background: var(--gray-50); }
+    .overview-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .ov-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 16px; padding: 28px 20px; text-align: center;
+    }
+    .ov-icon {
+      width: 52px; height: 52px; background: rgba(244,121,32,.1);
+      border-radius: 12px; display: flex; align-items: center;
+      justify-content: center; margin: 0 auto 16px; font-size: 24px;
+    }
+    .ov-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .ov-card p { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+    /* ── WHY ── */
+    .why { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .why-card {
+      padding: 28px 24px; border-left: 3px solid var(--orange);
+      background: var(--gray-50); border-radius: 0 14px 14px 0;
+    }
+    .why-num { font-size: 38px; font-weight: 800; color: var(--navy); line-height: 1; margin-bottom: 10px; }
+    .why-card h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .why-card p { font-size: 13px; color: var(--gray-500); line-height: 1.55; }
+
+    /* ── REVENUE ── */
+    .revenue { background: var(--gray-50); }
+    .revenue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .rev-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 18px; overflow: hidden; }
+    .rev-header { background: var(--navy); padding: 28px 24px; }
+    .rev-tag {
+      display: inline-block; background: var(--orange); color: var(--white);
+      font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px;
+      margin-bottom: 12px; text-transform: uppercase; letter-spacing: .06em;
+    }
+    .rev-header h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .rev-header p { font-size: 13px; color: rgba(255,255,255,.55); }
+    .rev-items { padding: 24px; list-style: none; }
+    .rev-items li {
+      padding: 10px 0; border-bottom: 1px solid var(--gray-100);
+      font-size: 14px; color: var(--gray-700);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .rev-items li:last-child { border-bottom: none; }
+    .rev-items li::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--orange); border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ── COMPETITIVE ── */
+    .competitive { background: var(--white); }
+    .adv-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .adv-card {
+      background: var(--navy); border-radius: 16px;
+      padding: 28px 20px; text-align: center; color: var(--white);
+    }
+    .adv-icon { font-size: 30px; margin-bottom: 14px; display: block; }
+    .adv-card h3 { font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .adv-card p { font-size: 12px; color: rgba(255,255,255,.55); line-height: 1.55; }
+
+    /* ── MAP ── */
+    .map-section { background: var(--gray-50); }
+    .map-wrap {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 20px; padding: 36px 36px 28px;
+    }
+    .map-legend { display: flex; gap: 28px; margin-bottom: 28px; flex-wrap: wrap; }
+    .leg { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; color: var(--gray-700); }
+    .leg-dot { width: 13px; height: 13px; border-radius: 50%; }
+    .leg-dot.ex  { background: var(--orange); }
+    .leg-dot.av  { background: var(--navy); }
+
+    /* ── INVESTMENT ── */
+    .investment { background: var(--navy); }
+    .investment .section-title { color: var(--white); }
+    .investment .section-sub   { color: rgba(255,255,255,.6); }
+    .inv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+    .inv-amount-card {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14);
+      border-radius: 20px; padding: 52px 40px; text-align: center;
+    }
+    .inv-lbl {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+      color: var(--orange); font-weight: 700; margin-bottom: 16px;
+    }
+    .inv-amount { font-size: 72px; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 12px; }
+    .inv-note { font-size: 14px; color: rgba(255,255,255,.5); }
+    .incl-title {
+      font-size: 11px; text-transform: uppercase; letter-spacing: .1em;
+      color: rgba(255,255,255,.45); font-weight: 700; margin-bottom: 20px;
+    }
+    .inclusions { list-style: none; }
+    .inclusions li {
+      display: flex; align-items: center; gap: 16px;
+      padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.1);
+      font-size: 16px; color: var(--white); font-weight: 500;
+    }
+    .inclusions li:last-child { border-bottom: none; }
+    .chk {
+      width: 28px; height: 28px; background: var(--orange); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0; color: #fff;
+    }
+
+    /* ── IDEAL PARTNER ── */
+    .partner { background: var(--white); }
+    .partner-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; }
+    .pcard {
+      border: 1.5px solid var(--gray-200); border-radius: 16px;
+      padding: 28px 20px; text-align: center;
+      transition: border-color .2s, transform .2s;
+    }
+    .pcard:hover { border-color: var(--orange); transform: translateY(-4px); }
+    .pcard-icon { font-size: 36px; margin-bottom: 14px; display: block; }
+    .pcard h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+    .pcard p { font-size: 12px; color: var(--gray-500); line-height: 1.55; }
+
+    /* ── SCARCITY ── */
+    .scarcity {
+      background: linear-gradient(135deg, var(--navy) 0%, #0f1d3d 100%);
+      padding: 88px 24px; text-align: center;
+    }
+    .scarcity-inner { max-width: 760px; margin: 0 auto; }
+    .scarcity h2 {
+      font-size: clamp(28px, 4vw, 46px); font-weight: 800;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .scarcity p { font-size: 18px; color: rgba(255,255,255,.62); margin-bottom: 40px; }
+    .badges { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+    .badge {
+      background: rgba(244,121,32,.15); border: 1px solid rgba(244,121,32,.4);
+      color: var(--orange); font-size: 14px; font-weight: 600;
+      padding: 10px 22px; border-radius: 100px;
+    }
+
+    /* ── FORM ── */
+    .form-section { background: var(--gray-50); }
+    .form-wrap { max-width: 700px; margin: 0 auto; }
+    .form-box {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: 24px; padding: 52px 48px;
+    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .fgrp { display: flex; flex-direction: column; gap: 6px; }
+    .fgrp.full { grid-column: 1 / -1; }
+    label { font-size: 14px; font-weight: 600; color: var(--gray-700); }
+    label .req { color: var(--orange); margin-left: 2px; }
+    input, select, textarea {
+      padding: 12px 16px; border: 1.5px solid var(--gray-200);
+      border-radius: 10px; font-size: 15px; font-family: inherit;
+      color: var(--gray-900); background: var(--white);
+      transition: border-color .2s; outline: none; width: 100%;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--orange); }
+    input.err, select.err { border-color: #ef4444; }
+    .errmsg { font-size: 12px; color: #ef4444; display: none; }
+    .errmsg.show { display: block; }
+    textarea { resize: vertical; min-height: 96px; }
+    .form-submit { width: 100%; padding: 16px; font-size: 17px; font-weight: 700; border-radius: 12px; margin-top: 8px; }
+
+    /* ── FINAL CTA ── */
+    .final-cta { background: var(--orange); padding: 100px 24px; text-align: center; }
+    .final-cta h2 {
+      font-size: clamp(28px, 4vw, 52px); font-weight: 800;
+      color: var(--white); margin-bottom: 16px;
+    }
+    .final-cta p { font-size: 18px; color: rgba(255,255,255,.82); margin-bottom: 44px; }
+
+    /* ── FOOTER ── */
+    footer { background: #0d1a36; padding: 52px 24px; }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: center; flex-wrap: wrap; gap: 24px;
+    }
+    .flogo { font-size: 20px; font-weight: 800; }
+    .flogo .p { color: var(--white); }
+    .flogo .n { color: var(--orange); }
+    .flinks { display: flex; gap: 28px; list-style: none; flex-wrap: wrap; }
+    .flinks a { font-size: 14px; color: rgba(255,255,255,.5); text-decoration: none; transition: color .2s; }
+    .flinks a:hover { color: var(--white); }
+    .flinks .hl { color: var(--orange); font-weight: 700; }
+    .fcopy { font-size: 13px; color: rgba(255,255,255,.3); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .hero-inner    { grid-template-columns: 1fr; }
+      .overview-grid { grid-template-columns: repeat(3, 1fr); }
+      .adv-grid      { grid-template-columns: repeat(3, 1fr); }
+      .partner-grid  { grid-template-columns: repeat(3, 1fr); }
+      .inv-grid      { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 700px) {
+      .section { padding: 56px 16px; }
+      .stats-grid    { grid-template-columns: repeat(2, 1fr); }
+      .overview-grid { grid-template-columns: repeat(2, 1fr); }
+      .why-grid      { grid-template-columns: 1fr; }
+      .revenue-grid  { grid-template-columns: 1fr; }
+      .adv-grid      { grid-template-columns: repeat(2, 1fr); }
+      .partner-grid  { grid-template-columns: repeat(2, 1fr); }
+      .form-grid     { grid-template-columns: 1fr; }
+      .form-box      { padding: 28px 20px; }
+      .nav-links     { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo"><span class="p">Postal</span><span class="n">Nook</span></a>
+    <ul class="nav-links">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Business</a></li>
+      <li><a href="#investment">Investment</a></li>
+      <li><a href="#apply">Partners</a></li>
+      <li><a href="/licensing" class="active">Licensing</a></li>
+    </ul>
+    <a href="#apply" class="btn-primary">Apply for Your City</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════ HERO ══════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-eyebrow">PostalNook · Licensing Program</p>
+      <h1 class="hero-title">Own the <em>Exclusive</em> PostalNook Territory in Your City</h1>
+      <p class="hero-sub">Proven recurring revenue model built in Austin, Texas. Join the next generation of mailbox business owners with full platform support.</p>
+      <div class="hero-ctas">
+        <a href="#apply" class="btn-primary">Apply for Your City</a>
+        <a href="#overview" class="btn-outline">Learn More ↓</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num">2<sup>+ yrs</sup></div>
+        <div class="hstat-lbl">Operating successfully in Austin</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">$20<sup>K+</sup></div>
+        <div class="hstat-lbl">Monthly revenue per location</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">600<sup>+</sup></div>
+        <div class="hstat-lbl">Active mailbox subscribers</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num">4.8<sup>★</sup></div>
+        <div class="hstat-lbl">Customer satisfaction rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ TRACTION ══════════════════════════════════ -->
+<section class="section traction" id="traction">
+  <div class="section-inner">
+    <p class="section-label">Proof · Traction</p>
+    <h2 class="section-title" style="text-align:center">The numbers speak for themselves</h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 52px">Verified results from our Austin, TX flagship location.</p>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-num">2<sup>+ yrs</sup></div>
+        <div class="stat-desc">Operating successfully in Austin, TX</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">~$20<sup>K</sup></div>
+        <div class="stat-desc">Monthly revenue per location</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">600<sup>+</sup></div>
+        <div class="stat-desc">Active mailbox subscribers</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">4.8<sup>★</sup></div>
+        <div class="stat-desc">Customer satisfaction rating</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ OVERVIEW ══════════════════════════════════ -->
+<section class="section overview" id="overview">
+  <div class="section-inner">
+    <p class="section-label">The Business · What is PostalNook</p>
+    <h2 class="section-title">A hybrid model built for recurring revenue</h2>
+    <p class="section-sub">PostalNook combines a digital-first platform with physical retail services — creating multiple income streams from a single location.</p>
+    <div class="overview-grid">
+      <div class="ov-card">
+        <div class="ov-icon">📬</div>
+        <h3>Physical Mailboxes</h3>
+        <p>Secure, private mailbox rentals for individuals and businesses</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-icon">💻</div>
+        <h3>Virtual Mailbox SaaS</h3>
+        <p>Digital subscriptions — serve national &amp; international customers</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-icon">✈️</div>
+        <h3>Mail Forwarding</h3>
+        <p>Forward mail anywhere in the world on demand</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-icon">🖨️</div>
+        <h3>Print &amp; Scan</h3>
+        <p>Printing, scanning, and full business service center</p>
+      </div>
+      <div class="ov-card">
+        <div class="ov-icon">📦</div>
+        <h3>Package Receiving</h3>
+        <p>Secure package storage and receiving for all carriers</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ WHY ════════════════════════════════════ -->
+<section class="section why">
+  <div class="section-inner">
+    <p class="section-label">Market Validation · Why Now</p>
+    <h2 class="section-title">Four tailwinds driving demand</h2>
+    <p class="section-sub">PostalNook sits at the intersection of four massive, accelerating trends that aren't slowing down.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-num">$6T</div>
+        <h3>E-commerce Growth</h3>
+        <p>Global e-commerce is booming — driving demand for package receiving and professional business addresses</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">35M+</div>
+        <h3>Rise of Remote Work</h3>
+        <p>Remote professionals need a real business address — and PostalNook delivers it digitally</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">5.5M</div>
+        <h3>New Businesses / Year</h3>
+        <p>Record-breaking new business registrations — every company needs a registered address</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">↑</div>
+        <h3>Privacy &amp; Security</h3>
+        <p>Growing consumer concerns over personal address exposure are pushing demand for virtual mailbox services</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════== REVENUE ══════════════════════════════════ -->
+<section class="section revenue">
+  <div class="section-inner">
+    <p class="section-label">Revenue Model · Income Streams</p>
+    <h2 class="section-title">Three revenue streams, one location</h2>
+    <p class="section-sub">Diversified income from online, in-store, and B2B channels reduces risk and maximises earning potential.</p>
+    <div class="revenue-grid">
+      <div class="rev-card">
+        <div class="rev-header">
+          <div class="rev-tag">Online</div>
+          <h3>Digital Services</h3>
+          <p>Subscription-based recurring revenue</p>
+        </div>
+        <ul class="rev-items">
+          <li>Virtual mailbox subscriptions</li>
+          <li>Mail forwarding services</li>
+          <li>Document scanning</li>
+          <li>Shredding services</li>
+        </ul>
+      </div>
+      <div class="rev-card">
+        <div class="rev-header">
+          <div class="rev-tag">In-Store</div>
+          <h3>Physical Services</h3>
+          <p>Walk-in retail and mailbox rentals</p>
+        </div>
+        <ul class="rev-items">
+          <li>Physical mailbox rentals</li>
+          <li>Shipping services</li>
+          <li>Printing &amp; copying</li>
+          <li>Notary services</li>
+        </ul>
+      </div>
+      <div class="rev-card">
+        <div class="rev-header">
+          <div class="rev-tag">B2B</div>
+          <h3>Business Services</h3>
+          <p>High-margin corporate contracts</p>
+        </div>
+        <ul class="rev-items">
+          <li>E-commerce fulfillment</li>
+          <li>Package receiving &amp; storage</li>
+          <li>Registered agent services</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════ COMPETITIVE ════════════════════════════════ -->
+<section class="section competitive">
+  <div class="section-inner">
+    <p class="section-label">Why PostalNook · Competitive Edge</p>
+    <h2 class="section-title">Built different from the start</h2>
+    <p class="section-sub">PostalNook isn't a traditional mailbox store. It's a tech-enabled platform with structural advantages that independent operators can never replicate.</p>
+    <div class="adv-grid">
+      <div class="adv-card">
+        <span class="adv-icon">🔁</span>
+        <h3>Recurring SaaS Revenue</h3>
+        <p>Monthly subscriptions create predictable, compounding income</p>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">🌍</span>
+        <h3>National &amp; International Customers</h3>
+        <p>Your virtual mailbox customers can live anywhere in the world</p>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">⚙️</span>
+        <h3>Proprietary Platform</h3>
+        <p>Purpose-built software for mailbox management and customer experience</p>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">📣</span>
+        <h3>Centralized Marketing</h3>
+        <p>Corporate handles SEO, ads, and brand — you focus on operations</p>
+      </div>
+      <div class="adv-card">
+        <span class="adv-icon">🗺️</span>
+        <h3>Exclusive Territory</h3>
+        <p>One operator per city — zero internal competition, ever</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════ MAP ════════════════════════════════════ -->
+<section class="section map-section">
+  <div class="section-inner">
+    <p class="section-label">Expansion · Territory Map</p>
+    <h2 class="section-title">Claim your city before it's gone</h2>
+    <p class="section-sub">We're expanding to 8 new cities. One operator per territory — first qualified applicant gets permanent exclusivity.</p>
+    <div class="map-wrap">
+      <div class="map-legend">
+        <div class="leg"><div class="leg-dot ex"></div> Existing Location (Austin, TX)</div>
+        <div class="leg"><div class="leg-dot av"></div> Available Territory</div>
+      </div>
+      <svg viewBox="0 0 960 580" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+        <defs>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Contiguous US (simplified outline) -->
+        <path d="M 178,84 L 164,120 L 148,166 L 134,212 L 120,256 L 110,298 L 104,336
+                 L 104,368 L 108,392 L 120,412 L 138,426 L 162,434 L 192,440 L 228,443
+                 L 268,445 L 310,446 L 352,446 L 390,446 L 420,445 L 444,445 L 462,447
+                 L 476,453 L 486,462 L 494,474 L 500,488 L 504,504 L 508,518 L 514,530
+                 L 522,540 L 534,546 L 548,546 L 560,540 L 566,528 L 564,512 L 556,498
+                 L 548,484 L 548,470 L 558,460 L 574,452 L 598,444 L 628,434 L 664,422
+                 L 700,408 L 736,392 L 768,376 L 797,358 L 822,338 L 843,316 L 858,294
+                 L 866,272 L 866,250 L 856,230 L 838,212 L 814,196 L 786,182 L 755,170
+                 L 722,160 L 688,150 L 654,140 L 620,130 L 586,120 L 552,110 L 518,100
+                 L 484,92 L 450,86 L 416,80 L 382,78 L 348,78 L 314,80 L 280,80 L 246,78
+                 L 212,78 L 188,80 Z"
+          fill="#E8ECF3" stroke="#B8C5D8" stroke-width="1.5" stroke-linejoin="round"/>
+
+        <!-- Great Lakes (simplified) -->
+        <ellipse cx="652" cy="164" rx="26" ry="10" fill="#CBD5E5" opacity=".7"/>
+        <ellipse cx="696" cy="152" rx="18" ry="8" fill="#CBD5E5" opacity=".7"/>
+
+        <!-- Alaska inset -->
+        <rect x="76" y="480" width="108" height="72" rx="6" fill="#E8ECF3" stroke="#B8C5D8" stroke-width="1.2"/>
+        <text x="130" y="520" text-anchor="middle" font-size="9" fill="#8896B0" font-family="Inter,sans-serif" font-weight="600">Alaska</text>
+
+        <!-- Hawaii inset -->
+        <ellipse cx="265" cy="530" rx="30" ry="15" fill="#E8ECF3" stroke="#B8C5D8" stroke-width="1.2"/>
+        <text x="265" y="534" text-anchor="middle" font-size="9" fill="#8896B0" font-family="Inter,sans-serif" font-weight="600">Hawaii</text>
+
+        <!-- ── EXISTING: Austin, TX ── -->
+        <circle cx="432" cy="430" r="14" fill="#F47920" opacity=".25" filter="url(#glow)"/>
+        <circle cx="432" cy="430" r="10" fill="#F47920"/>
+        <circle cx="432" cy="430" r="4"  fill="#fff"/>
+        <rect x="354" y="445" width="80" height="22" rx="4" fill="#F47920"/>
+        <text x="394" y="460" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Inter,sans-serif">Austin ✓</text>
+
+        <!-- ── AVAILABLE: Dallas, TX ── -->
+        <circle cx="456" cy="396" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="469" y="393" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">Dallas</text>
+
+        <!-- ── AVAILABLE: Houston, TX ── -->
+        <circle cx="468" cy="450" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="481" y="458" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">Houston</text>
+
+        <!-- ── AVAILABLE: San Antonio, TX ── -->
+        <circle cx="418" cy="454" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="316" y="470" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">San Antonio</text>
+
+        <!-- ── AVAILABLE: Denver, CO ── -->
+        <circle cx="328" cy="312" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="341" y="316" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">Denver</text>
+
+        <!-- ── AVAILABLE: Miami, FL ── -->
+        <circle cx="614" cy="500" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="621" y="516" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">Miami</text>
+
+        <!-- ── AVAILABLE: Los Angeles, CA ── -->
+        <circle cx="136" cy="372" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="78" y="362" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">Los Angeles</text>
+
+        <!-- ── AVAILABLE: New York, NY ── -->
+        <circle cx="736" cy="212" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="748" y="216" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">New York</text>
+
+        <!-- ── AVAILABLE: Boston, MA ── -->
+        <circle cx="768" cy="184" r="9" fill="#1B2D5E" stroke="#fff" stroke-width="2"/>
+        <text x="780" y="188" font-size="11" font-weight="600" fill="#1B2D5E" font-family="Inter,sans-serif">Boston</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════ INVESTMENT ═══════════════════════════════ -->
+<section class="section investment" id="investment">
+  <div class="section-inner">
+    <p class="section-label">Investment · Getting Started</p>
+    <h2 class="section-title">Everything you need to launch</h2>
+    <p class="section-sub">Transparent pricing, no hidden costs. Financing options may be available for qualified applicants.</p>
+    <div class="inv-grid">
+      <div class="inv-amount-card">
+        <p class="inv-lbl">Starting Investment</p>
+        <div class="inv-amount">$150K</div>
+        <p class="inv-note">Financing options may be available</p>
+      </div>
+      <div>
+        <p class="incl-title">What's included</p>
+        <ul class="inclusions">
+          <li><span class="chk">✓</span> Full technology platform access</li>
+          <li><span class="chk">✓</span> Comprehensive training program</li>
+          <li><span class="chk">✓</span> Complete location setup support</li>
+          <li><span class="chk">✓</span> Ongoing operations support</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ IDEAL PARTNER ════════════════════════════ -->
+<section class="section partner">
+  <div class="section-inner">
+    <p class="section-label">Who We're Looking For · Ideal Partner</p>
+    <h2 class="section-title">Who makes a great PostalNook partner?</h2>
+    <p class="section-sub">Whether you're switching careers or scaling a portfolio — there's a path for you.</p>
+    <div class="partner-grid">
+      <div class="pcard">
+        <span class="pcard-icon">🚀</span>
+        <h3>Entrepreneurs</h3>
+        <p>Seeking scalable business opportunities with proven systems and brand support</p>
+      </div>
+      <div class="pcard">
+        <span class="pcard-icon">💼</span>
+        <h3>Corporate Professionals</h3>
+        <p>Transitioning from employment to ownership with existing business experience</p>
+      </div>
+      <div class="pcard">
+        <span class="pcard-icon">🏠</span>
+        <h3>Families</h3>
+        <p>Looking for an owner-operated business with flexibility and community impact</p>
+      </div>
+      <div class="pcard">
+        <span class="pcard-icon">📈</span>
+        <h3>Investors</h3>
+        <p>Seeking recurring passive income with a capital-light, tech-enabled model</p>
+      </div>
+      <div class="pcard">
+        <span class="pcard-icon">🏪</span>
+        <h3>Owner-Operators</h3>
+        <p>Existing retail or service business owners looking to diversify revenue</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ SCARCITY ══════════════════════════════════ -->
+<section class="scarcity">
+  <div class="scarcity-inner">
+    <p class="section-label" style="text-align:center">Limited Availability · Act Now</p>
+    <h2>Territories are being claimed.</h2>
+    <p>One operator per city — exclusivity is permanent. Once a territory is taken, it's gone forever.</p>
+    <div class="badges">
+      <div class="badge">One operator per city</div>
+      <div class="badge">Limited territories available</div>
+      <div class="badge">Approval required</div>
+    </div>
+    <a href="#apply" class="btn-primary" style="font-size:16px;padding:15px 40px">Apply for Your City →</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ LEAD FORM ═════════════════════════════════ -->
+<section class="section form-section" id="apply">
+  <div class="section-inner">
+    <p class="section-label" style="text-align:center">Apply · Lead Capture</p>
+    <h2 class="section-title" style="text-align:center">Apply for Your City</h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 40px">Tell us about yourself and your target city. We'll review your application and be in touch within 48 hours — no obligation.</p>
+    <div class="form-wrap">
+      <div class="form-box">
+        <form id="leadForm" novalidate>
+          <div class="form-grid">
+            <div class="fgrp">
+              <label for="fullName">Full Name <span class="req">*</span></label>
+              <input type="text" id="fullName" placeholder="Jane Smith" required>
+              <span class="errmsg" id="e-fullName">Please enter your full name</span>
+            </div>
+            <div class="fgrp">
+              <label for="email">Email Address <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="jane@example.com" required>
+              <span class="errmsg" id="e-email">Please enter a valid email</span>
+            </div>
+            <div class="fgrp">
+              <label for="phone">Phone Number <span class="req">*</span></label>
+              <input type="tel" id="phone" placeholder="+1 (555) 000-0000" required>
+              <span class="errmsg" id="e-phone">Please enter your phone number</span>
+            </div>
+            <div class="fgrp">
+              <label for="city">City of Interest <span class="req">*</span></label>
+              <select id="city" required>
+                <option value="">Select a city…</option>
+                <option>Dallas, TX</option>
+                <option>Houston, TX</option>
+                <option>San Antonio, TX</option>
+                <option>Denver, CO</option>
+                <option>Miami, FL</option>
+                <option>Los Angeles, CA</option>
+                <option>New York, NY</option>
+                <option>Boston, MA</option>
+                <option>Other</option>
+              </select>
+              <span class="errmsg" id="e-city">Please select a city</span>
+            </div>
+            <div class="fgrp full">
+              <label for="readiness">Investment Readiness</label>
+              <select id="readiness">
+                <option value="">Select…</option>
+                <option>Ready to invest now</option>
+                <option>Within 3 months</option>
+                <option>Within 6 months</option>
+                <option>Exploring options</option>
+              </select>
+            </div>
+            <div class="fgrp full">
+              <label for="experience">Relevant Experience</label>
+              <textarea id="experience" placeholder="Tell us about your business or professional background…"></textarea>
+            </div>
+          </div>
+          <button type="submit" class="btn-primary form-submit">Apply for Your City →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FINAL CTA ════════════════════════════════ -->
+<section class="final-cta">
+  <h2>Own your city before someone else does.</h2>
+  <p>Exclusive territories. Recurring revenue. Full support from day one.</p>
+  <a href="#apply" class="btn-white">Apply for Your City →</a>
+</section>
+
+<!-- ══════════════════════════════════ FOOTER ════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="flogo"><span class="p">Postal</span><span class="n">Nook</span></div>
+    <ul class="flinks">
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Business</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">FAQ</a></li>
+      <li><a href="/licensing" class="hl">Licensing Opportunities</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+    <p class="fcopy">© 2025 PostalNook. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  // Inline form validation
+  const required = ['fullName','email','phone','city'];
+  document.getElementById('leadForm').addEventListener('submit', e => {
+    e.preventDefault();
+    let ok = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      const er = document.getElementById('e-' + id);
+      const bad = !el.value.trim() || (id === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value));
+      el.classList.toggle('err', bad);
+      er.classList.toggle('show', bad);
+      if (bad) ok = false;
+    });
+    if (ok) {
+      const btn = document.querySelector('#leadForm button[type=submit]');
+      btn.textContent = '✓ Application Submitted — We\'ll be in touch within 48 hours!';
+      btn.style.background = '#16a34a';
+      btn.disabled = true;
+    }
+  });
+  required.forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      this.classList.remove('err');
+      document.getElementById('e-' + id).classList.remove('show');
+    });
+  });
+</script>
+
+</body>
+</html>
